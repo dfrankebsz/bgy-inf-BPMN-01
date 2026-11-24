@@ -1,3 +1,7 @@
+# Version UE2 V2
+
+Aktualisierung: lebensnäherer Einstieg, zusätzliche Comic-Illustrationen, stärkerer Fokus auf beruflichen Nutzen von BPMN, mehr Aufgaben in den letzten vier Kapiteln und neue Diagramm-Lückenaufgaben für XOR-Entscheidungen.
+
 # BPMN-Labor · Informatik UE 2 – Netlify-Projekt
 
 **Stand:** 24.11.2026  

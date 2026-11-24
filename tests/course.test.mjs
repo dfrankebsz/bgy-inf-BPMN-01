@@ -7,6 +7,6 @@ test('Falsche Auswahl und unvollständige Diagramm-Drops werden abgelehnt',()=>{
  const c=TASKS.find(t=>t.type==='category');assert.equal(grade(c,{}),false);
 });
 test('Die Kapitellängen sind bedarfsgerecht verteilt und AFB ausbalanciert',()=>{
- const a=TASKS.filter(t=>!t.bonus);assert.deepEqual(CHAPTERS.map(c=>a.filter(t=>t.chapter===c.id).length),[3,5,5,7,4]);assert.deepEqual([1,2,3].map(n=>a.filter(t=>t.afb===n).length),[6,12,6]);assert.equal(TASKS.filter(t=>t.bonus).length,3);assert.equal(TEST.length,10);
+ const a=TASKS.filter(t=>!t.bonus);assert.deepEqual(CHAPTERS.map(c=>a.filter(t=>t.chapter===c.id).length),[4,6,7,8,11]);assert.deepEqual([1,2,3].map(n=>a.filter(t=>t.afb===n).length),[9,18,9]);assert.equal(TASKS.filter(t=>t.bonus).length,4);assert.equal(TEST.length,10);
 });
 test('XP werden für einmalig gelöste Aufgaben vergeben und nach Käufen abgezogen',()=>{const p=newProgress();const t=TASKS[0];p.answers[t.id]={checked:true,correct:true};assert.equal(earnedXp(p),taskXp(t));assert.equal(wallet(p),taskXp(t))});

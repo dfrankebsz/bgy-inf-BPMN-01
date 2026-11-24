@@ -14,8 +14,8 @@ for(const t of [...TASKS,...TEST]){
 }
 for(const ch of CHAPTERS){const a=regular.filter(t=>t.chapter===ch.id);for(const n of [1,2,3])if(!a.some(t=>t.afb===n))errs.push(`AFB ${n} fehlt bei ${ch.id}`);if(!ch.cards?.length)errs.push(`Erklärungen fehlen ${ch.id}`);}
 const distribution=[1,2,3].map(n=>regular.filter(t=>t.afb===n).length);const chapters=CHAPTERS.map(ch=>regular.filter(t=>t.chapter===ch.id).length);
-if(distribution.join(',')!=='6,12,6')errs.push(`AFB-Verteilung falsch ${distribution}`);
-if(chapters.join(',')!=='3,5,5,7,4')errs.push(`Ungleichmäßige Kapitelverteilung falsch ${chapters}`);
+if(distribution.join(',')!=='9,18,9')errs.push(`AFB-Verteilung falsch ${distribution}`);
+if(chapters.join(',')!=='4,6,7,8,11')errs.push(`Ungleichmäßige Kapitelverteilung falsch ${chapters}`);
 if(TEST.length!==10)errs.push(`Test-Aufgabenzahl ${TEST.length}`);
 if(SHOP.length<8)errs.push(`XP-Shop zu klein`);
 console.log(JSON.stringify({regular:regular.length,bonus:TASKS.length-regular.length,test:TEST.length,distribution,chapters},null,2));
