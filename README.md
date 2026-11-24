@@ -1,6 +1,6 @@
-# Version UE2 V2
+# Version UE2 V3
 
-Aktualisierung: lebensnäherer Einstieg, zusätzliche Comic-Illustrationen, stärkerer Fokus auf beruflichen Nutzen von BPMN, mehr Aufgaben in den letzten vier Kapiteln und neue Diagramm-Lückenaufgaben für XOR-Entscheidungen.
+**Neu:** Die draw.io-Werkstatt nutzt ausschließlich lokalen Diagrammvergleich mit Musterlösungen. Es werden keine Diagramme hochgeladen. Bearbeitbare `.drawio`-Vorlagen können dort, wo vorhanden, direkt an der jeweiligen Aufgabe heruntergeladen werden. Vorhandene Schülerkonten und Fortschritte bleiben beim Ersetzen des Projekts erhalten (bei gleichem Netlify-Projekt).
 
 # BPMN-Labor · Informatik UE 2 – Netlify-Projekt
 
@@ -31,15 +31,15 @@ Aktualisierung: lebensnäherer Einstieg, zusätzliche Comic-Illustrationen, stä
 
 | Kapitel | Reguläre Aufgaben | Inhalte |
 |---|---:|---|
-| Warum BPMN? | 3 | Begriff, Entstehung, Berufsbezug |
-| Ereignisse und Tätigkeiten | 5 | Start, Endereignis, Task |
-| Sequenzfluss | 5 | Reihenfolge, Verbindungen, draw.io |
-| XOR-Entscheidungen | 7 | Verzweigung, Bedingungen, Zusammenführung |
-| draw.io-Werkstatt | 4 | Nachbauen, Fehlerkorrektur, eigenes Diagramm |
-| Zusätzlich | 3 Bonusaufgaben | Anspruchsvollere Übertragungen |
+| Warum BPMN? | 4 | Begriff, Entstehung, Berufsbezug |
+| Ereignisse und Tätigkeiten | 6 | Start, Endereignis, Task |
+| Sequenzfluss | 7 | Reihenfolge, Verbindungen, draw.io |
+| XOR-Entscheidungen | 8 | Verzweigung, Bedingungen, Zusammenführung |
+| draw.io-Werkstatt | 11 | Nachbauen, Fehlerkorrektur, eigenes Diagramm |
+| Zusätzlich | 4 Bonusaufgaben | Anspruchsvollere Übertragungen |
 | Abschlusstest | 10 Aufgaben | Kompetenzen prüfen |
 
-In den 24 regulären Aufgaben beträgt das Verhältnis AFB I / II / III = 6 / 12 / 6. Die Angaben zum Anforderungsbereich stehen nur direkt an der jeweiligen Aufgabe, nicht als Prozentwerte im Kurs.
+In den 36 regulären Aufgaben beträgt das Verhältnis AFB I / II / III = 9 / 18 / 9. Die Angaben zum Anforderungsbereich stehen nur direkt an der jeweiligen Aufgabe, nicht als Prozentwerte im Kurs.
 
 Alle Kapitel enthalten die wesentlichen fachlichen Erklärungen und Musterlösungen. Die Videos des GBTEC-Tutorials sind mit **Start- und Endzeitpunkten** verlinkt. Das verlinkte Tutorial wird nicht kopiert oder lokal gespeichert. Für den Videoserver gelten dessen eigene Nutzungs- und Datenschutzbedingungen.
 
@@ -63,7 +63,7 @@ Unter `assets/diagramme/` liegen `*.svg` und `*.png` als Ansichten sowie `*.draw
 
 - Single Choice, Multiple Choice, Wahr/Falsch, Kategorien, Paare, Sortierung und Symbol-Dropplätze werden **deterministisch** mit den Lösungsschlüsseln in `course-data.js` verglichen. Drag-and-Drop erhält Alternativen per Auswahlliste für Touchgeräte und Tastatur.
 - **Freitext** und **draw.io-Modellierungen** werden **nicht automatisch bewertet**. Die Lernenden schreiben ihre Begründung, lassen sich nach einer Sicherheitsabfrage die Musterlösung anzeigen und setzen ihre Selbsteinschätzung selbst. Die Lehrkraft sieht den entsprechenden Fortschritt als Selbstbewertung.
-- Für draw.io-Aufgaben können Lernende ein **eigenes Screenshotbild als PNG/JPG** hochladen. Es wird im Browser als kleines JPEG komprimiert und zusammen mit dem Fortschritt gespeichert. Das Bild wird beim PDF-Export mitgedruckt. Die originale `.drawio`-Datei wird **nicht** in der Cloud gespeichert; sie muss von den Lernenden lokal gesichert werden.
+- **draw.io-Aufgaben:** Lernende erstellen oder bearbeiten ihre Diagramme lokal in draw.io und speichern die `.drawio`-Datei auf dem eigenen Rechner. Wo eine bearbeitbare Vorlage vorgesehen ist, gibt es direkt in der Aufgabe einen Download-Button. Nach einer Rückfrage wird die Musterlösung sichtbar. Anschließend vergleichen Lernende ihre Zeichnung selbst mit den Kriterien und markieren die Aufgabe als gelöst oder als zu überarbeiten. **Es gibt keinen Datei-Upload.** Eine schriftliche Anmerkung ist freiwillig; die Selbsteinschätzung kann auch ohne Text erfolgen. Das PDF dokumentiert die Selbsteinschätzung und gegebenenfalls eine Anmerkung, **nicht** die lokale Diagrammdatei.
 - Wenn der gesamte Fortschritt am gleichen Tag von mehreren Geräten gleichzeitig bearbeitet wird, können die letzten Änderungen einander überschreiben. Deshalb jeweils nur ein Gerät zur gleichen Zeit benutzen und den Speichervorgang abschließen lassen.
 - XP werden für korrekte oder von Lernenden als korrekt selbstbewertete Leistungen vergeben. Der XP-Shop ist ausschließlich eine Lernmotivation, keine Leistungsnote.
 
@@ -77,11 +77,11 @@ Unter `assets/diagramme/` liegen `*.svg` und `*.png` als Ansichten sowie `*.draw
 - Auf einen Lehrerzugang kann nicht ohne Kenntnis des Lehrercodes registriert werden. **Den Code niemals veröffentlichen.**
 - Der Lehrerzugang besitzt absichtlich keinen Volltext-Zugriff auf private Freitext-Eingaben. Für inhaltliche Kontrolle können Schüler ihre Portfolio-PDFs vorlegen.
 - **Netlify Blobs ist ein Key-Value-Speicher und keine relationale Transaktionsdatenbank.** Für kleinere Kursgruppen geeignet; bei sehr vielen parallelen Nutzern sind weitere Last- und Sicherheitsprüfungen nötig.
-- Datenschutzfreigabe vor dem realen Schuleinsatz: insbesondere Auftragsverarbeitung, Datenschutzhinweise, Speicherfristen, Bildanhänge und Löschverfahren mit der Schule klären.
+- Datenschutzfreigabe vor dem realen Schuleinsatz: insbesondere Auftragsverarbeitung, Datenschutzhinweise, Speicherfristen und Löschverfahren mit der Schule klären.
 
 ## 5. Portfolio als PDF
 
-Über **Übersicht → Antwort-Portfolio** oder am Testende wird ein PDF aus **allen begonnenen Aufgaben**, eingegebenen Texten, Auswahlen, Selbsteinschätzungen und verfügbaren Diagrammbildern erzeugt. Bei angemeldeten Nutzern wird zuerst versucht, den Stand zu synchronisieren. Die Verarbeitung erfolgt serverseitig durch `pdfkit` in einer Netlify Function. Im Gastmodus wird die aktuelle Browserkopie übertragen, ohne dass ein Benutzerkonto entsteht.
+Über **Übersicht → Antwort-Portfolio** oder am Testende wird ein PDF aus **allen begonnenen Aufgaben**, eingegebenen Texten, Auswahlen, Selbsteinschätzungen und dem Status der Diagramm-Selbstkontrollen erzeugt. Bei draw.io-Aufgaben erscheint die Selbsteinschätzung und gegebenenfalls eine freiwillige schriftliche Anmerkung; die nur lokal gespeicherte Zeichnung selbst wird nicht im PDF abgebildet. Bei angemeldeten Nutzern wird zuerst versucht, den Stand zu synchronisieren. Die Verarbeitung erfolgt serverseitig durch `pdfkit` in einer Netlify Function. Im Gastmodus wird die aktuelle Browserkopie übertragen, ohne dass ein Benutzerkonto entsteht.
 
 ## 6. Entwicklerprüfung
 
@@ -99,8 +99,8 @@ In der Erstellungssitzung wurden die Inhaltsprüfung und die automatisierten Log
 
 1. Registrieren Sie Lehrkraft und Testschüler derselben Klasse; testen Sie ein Konto in einer zweiten Klasse.
 2. Lösen Sie eine Multiple-Choice-Aufgabe und eine Symbol-Drop-Aufgabe und melden Sie sich auf einem zweiten Gerät mit denselben Zugangsdaten an.
-3. Laden Sie zu einer draw.io-Aufgabe ein kleines PNG hoch, sichern Sie den Fortschritt und prüfen Sie, ob es nach dem erneuten Login sichtbar bleibt.
-4. Laden Sie das PDF-Portfolio und prüfen Sie die enthaltene Zeichnung, Aufgabe und schriftliche Begründung.
+3. Laden Sie die bearbeitbare `.drawio`-Vorlage einer Werkstattaufgabe herunter und öffnen Sie sie lokal. Vergleichen Sie Ihr Diagramm mit der Musterlösung und markieren Sie es ohne schriftliche Anmerkung als gelöst. Prüfen Sie nach erneuter Anmeldung, ob diese Selbsteinschätzung erhalten bleibt.
+4. Laden Sie das PDF-Portfolio herunter und prüfen Sie, ob die Aufgabe, die Selbsteinschätzung und gegebenenfalls eine freiwillige schriftliche Anmerkung enthalten sind. Die lokale Zeichnung wird nicht hochgeladen und nicht im PDF eingebettet.
 5. Prüfen Sie, ob die Lehreransicht den Fortschritt korrekt zeigt, danach einen gezielten Passwortreset und das Löschen eines Testkontos.
 6. Testen Sie die Darstellung auf Windows, Android und Apple-Geräten. Bei Touchbedienung benutzen Sie für die Symbolpositionen bei Bedarf die Auswahllisten.
 

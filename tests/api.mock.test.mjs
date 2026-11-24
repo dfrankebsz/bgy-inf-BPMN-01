@@ -54,6 +54,12 @@ test('Lehrercode, Klassenbindung, Fortschritt, Reset, Passwort und Entfernen',as
  const classroom=await run(getReq('classroom',tc));assert.equal(classroom.status,200);
  const students=(await classroom.json()).students;
  assert.equal(students.length,1);assert.equal(students[0].exerciseDone,1);
+ const diagramProgress={answers:{...progress.answers,'u5-6':{value:'',checked:true,selfAssessed:true,solutionViewed:true,correct:true}}};
+ const diagramSaved=await run(jsonReq('progress',{revision:0,progress:diagramProgress},sc));assert.equal(diagramSaved.status,200);
+ const diagramMe=await run(getReq('me',sc));assert.equal(diagramMe.status,200);
+ const diagramEntry=(await diagramMe.json()).progress.answers['u5-6'];
+ assert.equal(diagramEntry.correct,true,'draw.io darf nach Lösungssicht und Selbstprüfung ohne schriftliche Notiz als gelöst gelten');
+ assert.equal(diagramEntry.value,'');
  const uid=studentBody.user.id;
  const reset=await run(jsonReq('reset-student',{id:uid},tc));assert.equal(reset.status,200);
  const stale=await run(jsonReq('progress',{revision:0,progress},sc));assert.equal(stale.status,409);

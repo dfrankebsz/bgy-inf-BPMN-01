@@ -60,9 +60,8 @@ function cleanProgress(input, old=newProgress()){
   const checked=entry.checked===true;
   const solutionViewed=entry.solutionViewed===true;
   const selfAssessed=entry.selfAssessed===true;
-  const correct=t.type==='text' ? checked&&selfAssessed&&solutionViewed&&value.trim().length>0 : checked&&grade(t,value)===true;
-  const imageData=t.drawio && typeof entry.imageData==='string' && /^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(entry.imageData) && entry.imageData.length<100000?entry.imageData:undefined;
-  result.answers[t.id]={value,checked,solutionViewed,selfAssessed,correct,attempts:Math.min(99,Math.max(0,Number(entry.attempts)||0)),...(imageData?{imageData}:{})};
+  const correct=t.type==='text' ? checked&&selfAssessed&&solutionViewed&&(t.drawio||value.trim().length>0) : checked&&grade(t,value)===true;
+  result.answers[t.id]={value,checked,solutionViewed,selfAssessed,correct,attempts:Math.min(99,Math.max(0,Number(entry.attempts)||0))};
  }
  for(let i=0;i<SKILLS.length;i++){
   const s=input?.skills?.[i]; if(s && Number.isInteger(Number(s.rating)) && s.rating>=1&&s.rating<=5){result.skills[i]={rating:Number(s.rating),done:s.done===true};}
@@ -72,7 +71,13 @@ function cleanProgress(input, old=newProgress()){
 }
 async function newSession(user){const token=randomBytes(32).toString('hex');await sessions().setJSON(sha(token),{id:user.id,accountKey:user.key,expires:Date.now()+MAX_SESSION*1000,sessionVersion:user.sessionVersion||0});return token;}
 async function bodyJson(req){if(Number(req.headers.get('content-length')||0)>600000)throw new Error('body too large');const txt=await req.text();if(txt.length>600000)throw new Error('body too large');return txt?JSON.parse(txt):{};}
-async function getUserProgress(user){return await getJson(progressStore(),user.id) || newProgress();}
+async function getUserProgress(user){
+ const p=await getJson(progressStore(),user.id) || newProgress();
+ let migrated=false;
+ for(const entry of Object.values(p.answers||{}))if(entry && typeof entry==='object' && Object.hasOwn(entry,'imageData')){delete entry.imageData;migrated=true;}
+ if(migrated)await progressStore().setJSON(user.id,p);
+ return p;
+}
 async function getOneFromClass(teacher,id){const {blobs}=await accounts().list({prefix:`${encode(teacher.klass)}/`});if(blobs.length>1500)throw new Error('Zu viele Nutzer in der Klasse');for(const x of blobs){const a=await getJson(accounts(),x.key);if(a && a.role==='student' && a.id===id && a.klass===teacher.klass)return a;}return null;}
 async function getClassStudents(user){const {blobs}=await accounts().list({prefix:`${encode(user.klass)}/`});if(blobs.length>1500)throw new Error('Zu viele Nutzer in der Klasse');const arr=[];for(const x of blobs){const a=await getJson(accounts(),x.key);if(!a||a.role!=='student'||a.klass!==user.klass)continue;const p=await getUserProgress(a);const exercises=TASKS.filter(t=>!t.bonus&&p.answers[t.id]?.correct).length;arr.push({id:a.id,nickname:a.nickname,exerciseDone:exercises,exerciseTotal:TASKS.filter(t=>!t.bonus).length,testDone:TEST.filter(t=>p.answers[t.id]?.correct).length,xp:earnedXp(p),lastActivity:p.updatedAt||null,skillsDone:Object.values(p.skills||{}).filter(x=>x.done).length,needsPasswordChange:!!a.requirePasswordChange});}return arr.sort((a,b)=>a.nickname.localeCompare(b.nickname,'de'));}
 function nowISO(){return new Date().toISOString()}
@@ -101,13 +106,12 @@ async function makePDF(body,user){
  doc.moveDown(.7).fontSize(9).text('Enthalten sind die eingegebenen Antworten bereits bearbeiteter Aufgaben. Freitext-Selbsteinschätzungen sind keine automatische fachliche Prüfung.');
  let count=0;
  for(const ch of [...CHAPTERS,{id:'test',title:'Abschlusstest'}]){
-  const items=ALL_TASKS.filter(t=>{const entry=clean.answers[t.id];if(t.chapter!==ch.id||!entry)return false;const v=entry.value;return entry.checked||Boolean(entry.imageData)||(typeof v==='string'&&v.trim().length>0)||(Array.isArray(v)&&v.length>0)||(v&&typeof v==='object'&&Object.values(v).some(Boolean))||typeof v==='boolean'||Number.isInteger(v);});
+  const items=ALL_TASKS.filter(t=>{const entry=clean.answers[t.id];if(t.chapter!==ch.id||!entry)return false;const v=entry.value;return entry.checked||(typeof v==='string'&&v.trim().length>0)||(Array.isArray(v)&&v.length>0)||(v&&typeof v==='object'&&Object.values(v).some(Boolean))||typeof v==='boolean'||Number.isInteger(v);});
   if(!items.length)continue;
   ensure(70);doc.moveDown(1).font('Helvetica-Bold').fontSize(15).fillColor('#163b59').text(ch.title,{width:W});doc.moveDown(.25);
   for(const t of items){count++;ensure(105);const entry=clean.answers[t.id];
    doc.fillColor('#222').font('Helvetica-Bold').fontSize(10).text(`${count}. ${t.prompt.replace(/^BONUS:\s*/,'Bonus: ')}`,{width:W});
-   doc.moveDown(.2).font('Helvetica').fontSize(10).fillColor('#34445b').text(formatAnswer(t,entry.value),{width:W});
-   if(entry.imageData && t.drawio){try{const bytes=Buffer.from(entry.imageData.slice('data:image/jpeg;base64,'.length),'base64');ensure(260);doc.moveDown(.3);doc.image(bytes,{fit:[W,245],align:'center'});doc.moveDown(.3);}catch(e){doc.moveDown(.25).font('Helvetica').fontSize(8).text('Diagrammabbildung konnte nicht eingebettet werden.');}}
+   doc.moveDown(.2).font('Helvetica').fontSize(10).fillColor('#34445b').text(t.drawio && !String(entry.value||'').trim()?'Diagramm lokal in draw.io bearbeitet; keine schriftliche Anmerkung.':formatAnswer(t,entry.value),{width:W});
    doc.moveDown(.25).fontSize(8).fillColor('#66768b').text(t.type==='text' ? `Selbsteinschätzung: ${entry.correct?'als richtig markiert':entry.checked?'als zu überarbeiten markiert':'noch nicht abgeschlossen'}` : `Automatische Prüfung: ${entry.correct?'richtig':entry.checked?'nicht richtig':'noch nicht geprüft'}`,{width:W});
    doc.moveDown(.6);doc.strokeColor('#e7ebef').moveTo(M,doc.y).lineTo(M+W,doc.y).stroke();doc.moveDown(.45);
   }
