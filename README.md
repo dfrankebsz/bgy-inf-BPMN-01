@@ -13,7 +13,7 @@
 1. Entpacken Sie die ZIP-Datei. Laden Sie **den Inhalt des Ordners**, nicht die ZIP-Datei selbst, in das Hauptverzeichnis eines **neuen** GitHub-Repositories hoch. Insbesondere müssen `package.json`, `netlify.toml`, `app.js`, `course-data.js`, `index.html`, der Ordner `netlify/functions/` und `assets/` im Repository liegen.
 2. Öffnen Sie Netlify → **Add new project** → **Import an existing project** und verbinden Sie Ihr GitHub-Repository.
 3. Die Einstellungen werden aus `netlify.toml` geladen: **Build command** `npm run build`, **Publish directory** `dist`, **Functions** `netlify/functions`.
-4. Unter **Site configuration → Environment variables** legen Sie die Variable **`TEACHER_ACCESS_CODE`** an. Wählen Sie einen zufälligen geheimen Code mit **mindestens 16 Zeichen** (besser 24–32) und erlauben Sie Zugriff zur Laufzeit der Functions. **Tragen Sie den Wert nicht in GitHub oder in Quelldateien ein.** Anschließend deployen Sie die Seite erneut.
+4. Unter **Site configuration → Environment variables** legen Sie die Variable **`TEACHER_ACCESS_CODE`** an. Wählen Sie einen zufälligen geheimen Code mit **mindestens 12 Zeichen** (längere zufällige Codes sind empfehlenswert) und erlauben Sie Zugriff zur Laufzeit der Functions. **Tragen Sie den Wert nicht in GitHub oder in Quelldateien ein.** Anschließend deployen Sie die Seite erneut.
 5. Öffnen Sie die Netlify-Seite. Wählen Sie **Registrieren**, geben Sie eine **Klasse**, einen **Nickname** und ein selbstgewähltes **Passwort** mit mindestens 8 Zeichen ein. Lehrkräfte wählen zusätzlich **Lehrkraft** und geben den oben in Netlify hinterlegten Code ein. Konten bleiben an ihre angegebene Klasse gebunden. Jede Lehrkraft sieht nur Lernende derselben Klasse.
 6. **Gastmodus:** Der Lernkurs ist ohne Konto nutzbar. Antwortdaten liegen dann nur im Browser-Speicher des betreffenden Geräts. Bei Anmeldung lässt sich vorhandener Gastfortschritt nach Bestätigung übernehmen.
 
@@ -99,8 +99,8 @@ In der Erstellungssitzung wurden die Inhaltsprüfung und die automatisierten Log
 
 1. Registrieren Sie Lehrkraft und Testschüler derselben Klasse; testen Sie ein Konto in einer zweiten Klasse.
 2. Lösen Sie eine Multiple-Choice-Aufgabe und eine Symbol-Drop-Aufgabe und melden Sie sich auf einem zweiten Gerät mit denselben Zugangsdaten an.
-3. Laden Sie die bearbeitbare `.drawio`-Vorlage einer Werkstattaufgabe herunter und öffnen Sie sie lokal. Vergleichen Sie Ihr Diagramm mit der Musterlösung und markieren Sie es ohne schriftliche Anmerkung als gelöst. Prüfen Sie nach erneuter Anmeldung, ob diese Selbsteinschätzung erhalten bleibt.
-4. Laden Sie das PDF-Portfolio herunter und prüfen Sie, ob die Aufgabe, die Selbsteinschätzung und gegebenenfalls eine freiwillige schriftliche Anmerkung enthalten sind. Die lokale Zeichnung wird nicht hochgeladen und nicht im PDF eingebettet.
+3. Laden Sie zu einer draw.io-Aufgabe ein kleines PNG hoch, sichern Sie den Fortschritt und prüfen Sie, ob es nach dem erneuten Login sichtbar bleibt.
+4. Laden Sie das PDF-Portfolio und prüfen Sie die enthaltene Zeichnung, Aufgabe und schriftliche Begründung.
 5. Prüfen Sie, ob die Lehreransicht den Fortschritt korrekt zeigt, danach einen gezielten Passwortreset und das Löschen eines Testkontos.
 6. Testen Sie die Darstellung auf Windows, Android und Apple-Geräten. Bei Touchbedienung benutzen Sie für die Symbolpositionen bei Bedarf die Auswahllisten.
 
