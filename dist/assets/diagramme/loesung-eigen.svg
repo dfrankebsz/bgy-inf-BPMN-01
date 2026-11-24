@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1380 640" role="img" aria-label="BPMN-Diagramm loesung-eigen">
+<defs><marker id="ar" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#344567"/></marker></defs>
+<rect width="1380" height="640" fill="#f7f9ff" rx="18"/>
+<path d="M115 310.0 H152.5 V310.0 H187" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<path d="M340 310.0 H375.0 V310.0 H407" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<path d="M500 310.0 H552.5 V310.0 H602" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<rect x="525.5" y="285.0" width="54" height="25" rx="9" fill="#ffffff" stroke="#cdd7ed"/><text x="552.5" y="302.0" text-anchor="middle" font-size="15" font-weight="700" fill="#344567">Ja</text>
+<path d="M500 310.0 H555.0 V490.0 H607" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<rect x="528.0" y="375.0" width="54" height="25" rx="9" fill="#ffffff" stroke="#cdd7ed"/><text x="555.0" y="392.0" text-anchor="middle" font-size="15" font-weight="700" fill="#344567">Nein</text>
+<path d="M770 490.0 H805.0 V492.0 H837" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<path d="M745 310.0 H785.0 V310.0 H822" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<path d="M915 310.0 H965.0 V150.0 H1012" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<rect x="938.0" y="205.0" width="54" height="25" rx="9" fill="#ffffff" stroke="#cdd7ed"/><text x="965.0" y="222.0" text-anchor="middle" font-size="15" font-weight="700" fill="#344567">Ja</text>
+<path d="M915 310.0 H965.0 V490.0 H1012" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<rect x="938.0" y="375.0" width="54" height="25" rx="9" fill="#ffffff" stroke="#cdd7ed"/><text x="965.0" y="392.0" text-anchor="middle" font-size="15" font-weight="700" fill="#344567">Nein</text>
+<path d="M1175 150.0 H1207.5 V152.0 H1237" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<path d="M1175 490.0 H1207.5 V492.0 H1237" fill="none" stroke="#344567" stroke-width="3" marker-end="url(#ar)" stroke-linejoin="round"/>
+<circle cx="70.0" cy="310.0" r="37.0" stroke="#192845" stroke-width="2.5" fill="#fff"/>
+<text x="70.0" y="377" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#2c3d5c">Bestellung</text>
+<text x="70.0" y="394" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#2c3d5c">eingegangen</text>
+<rect x="190" y="275" width="150" height="70" rx="14" fill="#fff" stroke="#192845" stroke-width="2.5"/>
+<text x="265.0" y="315.0" text-anchor="middle" font-size="15" font-family="Arial, sans-serif" fill="#15243f">Bestelldaten prüfen</text>
+<path d="M455.0 268 L497 310.0 L455.0 352 L413 310.0Z" fill="#fff" stroke="#192845" stroke-width="2.5"/>
+<path d="M443.0 298.0 L467.0 322.0 M467.0 298.0 L443.0 322.0" stroke="#192845" stroke-width="3.5"/>
+<text x="455.0" y="375" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#2c3d5c">Vollständig?</text>
+<rect x="605" y="275" width="140" height="70" rx="14" fill="#fff" stroke="#192845" stroke-width="2.5"/>
+<text x="675.0" y="315.0" text-anchor="middle" font-size="15" font-family="Arial, sans-serif" fill="#15243f">Motiv prüfen</text>
+<path d="M870.0 268 L912 310.0 L870.0 352 L828 310.0Z" fill="#fff" stroke="#192845" stroke-width="2.5"/>
+<path d="M858.0 298.0 L882.0 322.0 M882.0 298.0 L858.0 322.0" stroke="#192845" stroke-width="3.5"/>
+<text x="870.0" y="375" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#2c3d5c">Geeignet?</text>
+<rect x="1015" y="115" width="160" height="70" rx="14" fill="#fff" stroke="#192845" stroke-width="2.5"/>
+<text x="1095.0" y="155.0" text-anchor="middle" font-size="15" font-family="Arial, sans-serif" fill="#15243f">Druckauftrag anlegen</text>
+<rect x="610" y="455" width="160" height="70" rx="14" fill="#fff" stroke="#192845" stroke-width="2.5"/>
+<text x="690.0" y="495.0" text-anchor="middle" font-size="15" font-family="Arial, sans-serif" fill="#15243f">Ablehnung versenden</text>
+<rect x="1015" y="455" width="160" height="70" rx="14" fill="#fff" stroke="#192845" stroke-width="2.5"/>
+<text x="1095.0" y="495.0" text-anchor="middle" font-size="15" font-family="Arial, sans-serif" fill="#15243f">Ablehnung versenden</text>
+<circle cx="1285.0" cy="152.0" r="37.0" stroke="#192845" stroke-width="6" fill="#fff"/>
+<text x="1285.0" y="219" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#2c3d5c">Druckauftrag angelegt</text>
+<circle cx="885.0" cy="492.0" r="37.0" stroke="#192845" stroke-width="6" fill="#fff"/>
+<text x="885.0" y="559" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#2c3d5c">Bestellung abgelehnt</text>
+<circle cx="1285.0" cy="492.0" r="37.0" stroke="#192845" stroke-width="6" fill="#fff"/>
+<text x="1285.0" y="559" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" fill="#2c3d5c">Bestellung abgelehnt</text>
+</svg>
